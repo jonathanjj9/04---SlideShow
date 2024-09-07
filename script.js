@@ -1,15 +1,16 @@
 'use strict';
 
 const images = [
-    {'id': '1', 'url':'./img/verde.jpg'},
-    {'id': '2', 'url':'./img/azulVermelho.jpg'},
-    {'id': '3', 'url':'./img/cinzaPreto.jpg'},
-    {'id': '4', 'url':'./img/peixeAmarelo.jpg'},
-    {'id': '5', 'url':'./img/roxoAmarelo.jpg'},
-    {'id': '6', 'url':'./img/vermelho.jpg'},
+    {'id': '1', 'url':'./img/caramelo.jpg'},
+    {'id': '2', 'url':'./img/doberman.jpg'},
+    {'id': '3', 'url':'./img/luluDaPomerania.jpg'},
+    {'id': '4', 'url':'./img/maltes.jpg'},
+    {'id': '5', 'url':'./img/pug.jpg'},
+    {'id': '6', 'url':'./img/são bernardo.jpg'},
 ]
 
-const container = document.querySelector('#container-items');
+const containerItems = document.querySelector('#container-items');
+
 
 const loadImages = (images, container) => {
  images.forEach (image => {
@@ -22,4 +23,21 @@ const loadImages = (images, container) => {
  })
 }
 
-loadImages(images, container);
+
+loadImages(images, containerItems);
+let items = document.querySelectorAll('.item');
+
+const previous = () =>{
+    containerItems.appendChild(items [0]); // appendChild - Metodo que manda item para o final da fila
+    items = document.querySelectorAll('.item');
+}
+
+const next = () => {
+    const lastItem = items[items.length -1];
+    containerItems.insertBefore(lastItem, items[0]);
+    items = document.querySelectorAll('.item');
+}
+
+
+document.querySelector('#previous').addEventListener('click', previous);
+document.querySelector('#next').addEventListener('click', next);
